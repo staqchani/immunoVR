@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -71,7 +71,7 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 1
-    value: 1.23
+    value: 1
   contrast:
     overrideState: 1
     value: 0
@@ -1340,7 +1340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -1349,7 +1349,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1.14
+    value: 0.33
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -1367,7 +1367,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 2.26
+    value: 1.34
   directLightingStrength:
     overrideState: 1
     value: 0
