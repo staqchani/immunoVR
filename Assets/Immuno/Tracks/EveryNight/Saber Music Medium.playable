@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff600427e566994ea055d6ca03533ef, type: 3}
   m_Name: VR_Beat Spawn Marker
   m_EditorClassIdentifier: 
-  m_Time: 9.45
+  m_Time: 6.25
   spawneable: {fileID: 7534675205999449639, guid: 336be1081630a20448abc0dc1bc320a6,
     type: 3}
   spawInfo:
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff600427e566994ea055d6ca03533ef, type: 3}
   m_Name: VR_Beat Spawn Marker
   m_EditorClassIdentifier: 
-  m_Time: 3.6
+  m_Time: 1.9833333333333334
   spawneable: {fileID: -8967289558340754843, guid: bb7b882687a40164bb90e774b8e93c2c,
     type: 3}
   spawInfo:
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
-  m_Name: Saber Music
+  m_Name: Saber Music Medium
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff600427e566994ea055d6ca03533ef, type: 3}
   m_Name: VR_Beat Spawn Marker
   m_EditorClassIdentifier: 
-  m_Time: 13.616666666666667
+  m_Time: 9.6
   spawneable: {fileID: -8967289558340754843, guid: bb7b882687a40164bb90e774b8e93c2c,
     type: 3}
   spawInfo:
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff600427e566994ea055d6ca03533ef, type: 3}
   m_Name: VR_Beat Spawn Marker
   m_EditorClassIdentifier: 
-  m_Time: 11.95
+  m_Time: 7.733333333333333
   spawneable: {fileID: -8967289558340754843, guid: bb7b882687a40164bb90e774b8e93c2c,
     type: 3}
   spawInfo:
@@ -1562,7 +1562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff600427e566994ea055d6ca03533ef, type: 3}
   m_Name: VR_Beat Spawn Marker
   m_EditorClassIdentifier: 
-  m_Time: 5.616666666666666
+  m_Time: 3.35
   spawneable: {fileID: -8967289558340754843, guid: bb7b882687a40164bb90e774b8e93c2c,
     type: 3}
   spawInfo:
@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff600427e566994ea055d6ca03533ef, type: 3}
   m_Name: VR_Beat Spawn Marker
   m_EditorClassIdentifier: 
-  m_Time: 7.45
+  m_Time: 5.116666666666666
   spawneable: {fileID: -8967289558340754843, guid: bb7b882687a40164bb90e774b8e93c2c,
     type: 3}
   spawInfo:

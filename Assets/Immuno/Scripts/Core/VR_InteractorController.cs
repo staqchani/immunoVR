@@ -8,13 +8,13 @@ namespace VRBeats
         private XRRayInteractor rayInteractor = null;
         private XRInteractorLineVisual interactorLineVisual = null;
         private LineRenderer lineRender = null;
-        
+        private XRController controller;
         private void Awake()
         {
             rayInteractor = GetComponent<XRRayInteractor>();
             interactorLineVisual = GetComponent<XRInteractorLineVisual>();
             lineRender = GetComponent<LineRenderer>();
-                        
+            controller = GetComponent<XRController>();            
             
             DisableXRRayInteractorComponents();
         }
@@ -31,6 +31,11 @@ namespace VRBeats
             rayInteractor.enabled = true;
             interactorLineVisual.enabled = true;
             lineRender.enabled = true;
+        }
+
+        public void PlayHapticEffect()
+        {
+            controller.SendHapticImpulse(0.7f, 1f);
         }
 
     }

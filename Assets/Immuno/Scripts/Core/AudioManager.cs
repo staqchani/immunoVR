@@ -45,7 +45,8 @@ namespace VRBeats
 
         public void PlayShortClip(AudioClip clip)
         {
-            secondaryAudioSource.PlayOneShot(clip);
+            secondaryAudioSource.clip = clip;
+            secondaryAudioSource.Play();
         }
     }
 

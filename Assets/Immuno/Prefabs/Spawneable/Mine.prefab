@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMineSlice: {fileID: 11400000, guid: 652ff2ee33cba5b47a1beda94f2269fd, type: 2}
   onGameOver: {fileID: 11400000, guid: 620f7aac602ad78418fb6c1ca0a6670a, type: 2}
-  onCut: {fileID: 0}
+  onCut: {fileID: 11400000, guid: a232fde6916f48b4499d8363ccb808f4, type: 2}
   explosionPrefab: {fileID: 6080328207112737667, guid: c5f21d20cc15cae41bd20dbef97cac8b,
     type: 3}
 --- !u!114 &7534675205999449639

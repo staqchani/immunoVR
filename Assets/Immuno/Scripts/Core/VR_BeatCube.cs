@@ -57,20 +57,23 @@ namespace VRBeats
         public void OnCut(DamageInfo info)
         {
             canBeKilled = false;
-            onCut?.Invoke(0);
+            
             Instantiate(thisSpawneable.explosionPrefab, transform.position, Quaternion.identity);
             if(thisColorSide == ColorSide.None)
             {
+                onCut?.Invoke(1);
                 onIncorrectSlice.Invoke();
                 return;
             }
             //notify to whoever is listening that the player did a correct/incorrect slice
             if ( IsCutIntentValid(info as BeatDamageInfo) )
             {
+                onCut?.Invoke(0);
                 onCorrectSlice.Invoke();
             }
             else
             {
+                onCut?.Invoke(1);
                 onIncorrectSlice.Invoke();
             }            
 

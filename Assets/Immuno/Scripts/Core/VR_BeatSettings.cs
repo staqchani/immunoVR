@@ -19,6 +19,10 @@ namespace VRBeats
         [Header("Audio")]
         [SerializeField] private AudioClip leftCut;
         [SerializeField] private AudioClip rightCut;
+        [Header("Spawnable")]
+        [SerializeField]private Spawneable greenCell;
+        [SerializeField]private Spawneable redCell;
+        [SerializeField] private ModeSetting[] modes;
         public Color RightColor { get { return rightColor; } }
         public Color LeftColor { get { return leftColor; } }
         public float GlowIntensity { get { return glowIntensity; } }
@@ -31,6 +35,26 @@ namespace VRBeats
 
         public AudioClip RightCutSound { get { return rightCut; } }
         public AudioClip LeftCutSound { get { return leftCut; } }
+
+        public Spawneable GreenCell { get { return greenCell; } }
+        public Spawneable RedCell { get { return redCell; } }
+        public ModeSetting Mode(int m) => modes[m];
+
+        public void SetTargetTravelTime(float t) => targetTravelTime = t;
+    }
+    [System.Serializable]
+    public class ModeSetting
+    {
+        public ModeLevel mode;
+        public int totalSpawnable;
+        [Range(3,6)]
+        public int greenCellChance;
     }
 
+    public enum ModeLevel
+    {
+        Easy,
+        Medium,
+        Hard
+    }
 }

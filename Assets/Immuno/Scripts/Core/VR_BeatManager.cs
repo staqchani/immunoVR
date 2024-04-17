@@ -3,6 +3,7 @@ using Platinio;
 using UnityEngine.Playables;
 using VRBeats.ScriptableEvents;
 using VRSDK;
+using System.Collections;
 
 namespace VRBeats
 {
@@ -31,13 +32,56 @@ namespace VRBeats
             base.Awake();
             audioManager = FindObjectOfType<AudioManager>();
             enviromentController = FindObjectOfType<EnviromentController>();
+
             playableDirector = FindObjectOfType<PlayableDirector>();
         }
 
+        IEnumerator GameCoroutine()
+        {
+            float duration = (float)playableDirector.playableAsset.duration;
+            float t = 0;
+            int complexity = PlayerPrefs.GetInt("Complexity");
+            settings.SetTargetTravelTime(complexity == 0 ? 0.5f : complexity == 1 ? 0.4f : 0.3f);
+            ModeSetting mode = settings.Mode(complexity);
+            float steps = duration / mode.totalSpawnable;
+            float s = 0;
+            float spawnTime = 0;
+            float lastSpawnTime = 0;
+            bool spawn = false;
+            while(t < duration && isGameRunning)
+            {
+                t += Time.deltaTime;
+                s += Time.deltaTime;
+                if(s > steps)
+                {
+                    spawnTime = Random.Range(0, steps/3f);
+                    s = 0;
+                    spawn = false;
+                    
+                }
+
+                if(s > spawnTime && !spawn)
+                {
+                    spawn = true;
+                    lastSpawnTime = t;
+                    SpawnEventInfo info = new SpawnEventInfo()
+                    {
+                        colorSide = Random.Range(0, 2) == 1 ? ColorSide.Left : ColorSide.Right
+                    };
+
+                    Spawneable sp = Random.Range(0, mode.greenCellChance) == 0 ? settings.GreenCell : settings.RedCell;
+                    Spawn(sp, info);
+                }
+                yield return null;
+            }
+
+            //if (isGameRunning) GameOver();
+        }
         protected override void Start()
         {
             base.Start();
             playerConsecutiveMiss = 0;
+            StartCoroutine(GameCoroutine());
         }
         
         public void PlayCutSound(int clip)
@@ -124,7 +168,7 @@ namespace VRBeats
             audioManager.BlendAudioMixerPitch(1.0f , 0.0f).SetOnComplete( delegate {
                 if (playableDirector != null)
                     playableDirector.Stop();
-                } 
+            }
             ).SetOwner(gameObject);
             enviromentController?.TurnLightsOff();
             
@@ -137,8 +181,9 @@ namespace VRBeats
             isGameRunning = true;
             audioManager.SetAudioMixerPitch(1.0f);
             enviromentController?.TurnLightsOn();
-            playableDirector.time = 0.0f;
-            playableDirector.Play();
+            StartCoroutine(GameCoroutine());
+            //playableDirector.time = 0.0f;
+            //playableDirector.Play();
         }
 
     }

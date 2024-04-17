@@ -1,6 +1,7 @@
 ﻿using System;
 using DamageSystem;
 using UnityEngine;
+using VRBeats.ScriptableEvents;
 using VRSDK;
 
 namespace VRBeats
@@ -8,7 +9,7 @@ namespace VRBeats
     public class DamageSaber : VR_MeleeWeapon
     {
         [SerializeField] private ColorSide colorSide;
-
+        [SerializeField] private GameEvent onCut;
         private VR_Controller controller;
 
         private void Start()
@@ -21,7 +22,7 @@ namespace VRBeats
         {
             var damageInfo = base.CreateDamageInfo(hitPoint);
             BeatDamageInfo beatDamageInfo = new BeatDamageInfo(damageInfo);
-
+            onCut?.Invoke();
             Vector3 controllerVelocity = controller.Velocity;
 
             beatDamageInfo.hitForce = Mathf.Min((controllerVelocity * hitForce).magnitude, maxHitForce);

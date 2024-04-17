@@ -123,6 +123,7 @@ MonoBehaviour:
   onCorrectSlice: {fileID: 11400000, guid: d59348dca6b9d334abcf862e7028cf9a, type: 2}
   onIncorrectSlice: {fileID: 11400000, guid: 54cde7514b2f1d0478f67ebbb7ae9095, type: 2}
   onPlayerMiss: {fileID: 11400000, guid: 64c69597d841fe943a9208e76c0b6361, type: 2}
+  onCut: {fileID: 11400000, guid: a232fde6916f48b4499d8363ccb808f4, type: 2}
 --- !u!114 &4750244416697131415
 MonoBehaviour:
   m_ObjectHideFlags: 0

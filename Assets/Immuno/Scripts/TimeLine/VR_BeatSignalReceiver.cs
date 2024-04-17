@@ -25,7 +25,7 @@ namespace VRBeats
         {
             if (notification is VR_BeatSpawnMarker spawnMarker)
             {
-                VR_BeatManager.instance.Spawn(spawnMarker.spawneable, spawnMarker.spawInfo);
+                //VR_BeatManager.instance.Spawn(spawnMarker.spawneable, spawnMarker.spawInfo);
                 Debug.Log("Spawnng " + spawnMarker.spawneable.name);
                 lastTime = spawnMarker.time;
 
