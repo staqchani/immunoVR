@@ -261,5 +261,5 @@ QualitySettings:
   m_PerPlatformDefaultQuality:
     Android: 5
     Server: 0
-    Standalone: 0
+    Standalone: 5
     WebGL: 0

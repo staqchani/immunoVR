@@ -12,7 +12,7 @@ namespace VRBeats
         [SerializeField] private Transform player = null;
         [SerializeField] private VR_BeatSettings settings = null;
         [SerializeField] private GameEvent onGameOver = null;
-        
+        [SerializeField] private AudioClip[] cutSounds;
         private AudioManager audioManager = null;
         private EnviromentController enviromentController = null;
         private PlayableDirector playableDirector = null;
@@ -40,7 +40,10 @@ namespace VRBeats
             playerConsecutiveMiss = 0;
         }
         
-
+        public void PlayCutSound(int clip)
+        {
+            audioManager.PlayShortClip(cutSounds[clip]);
+        }
         public Color GetColorFromColorSide(ColorSide side)
         {
             return side == ColorSide.None ? RightColor : LeftColor;

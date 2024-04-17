@@ -11,7 +11,7 @@ namespace VRBeats
         [SerializeField] private GameEvent onCorrectSlice = null;
         [SerializeField] private GameEvent onIncorrectSlice = null;
         [SerializeField] private GameEvent onPlayerMiss = null;
-
+        [SerializeField] protected IntGameEvent onCut = null;
 
         private MaterialBindings materialBindings = null;
         private ColorSide thisColorSide = ColorSide.Right;
@@ -57,6 +57,7 @@ namespace VRBeats
         public void OnCut(DamageInfo info)
         {
             canBeKilled = false;
+            onCut?.Invoke(0);
             Instantiate(thisSpawneable.explosionPrefab, transform.position, Quaternion.identity);
             if(thisColorSide == ColorSide.None)
             {

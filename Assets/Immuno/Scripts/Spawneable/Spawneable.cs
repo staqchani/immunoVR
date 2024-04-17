@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VRBeats.ScriptableEvents;
 
 
 #if UNITY_EDITOR
@@ -11,7 +12,6 @@ namespace VRBeats
     {
         [SerializeField] private float speed = 2.0f;
         [SerializeField] private Vector3 rotation = Vector3.zero;
-        
         public float Speed { get { return speed; } }
 
         private bool updatePositionX = false;

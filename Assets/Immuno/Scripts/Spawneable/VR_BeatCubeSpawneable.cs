@@ -24,19 +24,12 @@ namespace VRBeats
 
         [SerializeField] GameEvent onLeftCubeEnter;
         [SerializeField] GameEvent onRightCubeEnter;
+       
         public override void OnSpawn()
         {
             base.OnSpawn();
-            if (colorSide == ColorSide.Left)
-            {
-                onLeftCubeEnter?.Invoke();
-                hint.text = "Left";
-            }
-            else
-            {
-                onRightCubeEnter?.Invoke();
-                hint.text = "Right";
-            }
+
+            
             if (useSpark || false)
             {
                 if (sparkPrefab == null) return;
@@ -58,7 +51,18 @@ namespace VRBeats
             colorSide = info.colorSide;
             useSpark = info.useSpark;
             hitDirection = info.hitDirection;
-
+            if (colorSide == ColorSide.Left)
+            {
+                onLeftCubeEnter?.Invoke();
+                hint.text = "Left";
+                hint.color = Color.yellow;
+            }
+            else
+            {
+                onRightCubeEnter?.Invoke();
+                hint.text = "Right";
+                hint.color = Color.blue;
+            }
             //use the arrow of the center
             //arrow.SetActive( info.hitDirection != Direction.Center );
             //dot.SetActive( info.hitDirection == Direction.Center );

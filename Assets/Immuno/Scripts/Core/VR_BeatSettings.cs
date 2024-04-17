@@ -16,7 +16,9 @@ namespace VRBeats
         [Header("Score")]
         [SerializeField] private int scorePerHit = 1;
         [SerializeField] private int maxMultiplier = 10;
-       
+        [Header("Audio")]
+        [SerializeField] private AudioClip leftCut;
+        [SerializeField] private AudioClip rightCut;
         public Color RightColor { get { return rightColor; } }
         public Color LeftColor { get { return leftColor; } }
         public float GlowIntensity { get { return glowIntensity; } }
@@ -26,6 +28,9 @@ namespace VRBeats
         public int ScorePerHit { get { return scorePerHit; } }
         public int MaxMultiplier { get { return maxMultiplier; } } 
         public int ErrorLimit { get { return errorLimit; } }
+
+        public AudioClip RightCutSound { get { return rightCut; } }
+        public AudioClip LeftCutSound { get { return leftCut; } }
     }
 
 }

@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMineSlice: {fileID: 11400000, guid: 652ff2ee33cba5b47a1beda94f2269fd, type: 2}
   onGameOver: {fileID: 11400000, guid: 620f7aac602ad78418fb6c1ca0a6670a, type: 2}
+  onCut: {fileID: 0}
   explosionPrefab: {fileID: 6080328207112737667, guid: c5f21d20cc15cae41bd20dbef97cac8b,
     type: 3}
 --- !u!114 &7534675205999449639
@@ -204,27 +205,27 @@ PrefabInstance:
     - target: {fileID: 171821696324417408, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 171821696324417408, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 171821696324417408, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 171821696324417408, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 171821696324417408, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 171821696324417408, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
@@ -234,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 171821696324417408, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 660268005639286074, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
@@ -242,6 +243,11 @@ PrefabInstance:
       value: Green_Cell
       objectReference: {fileID: 0}
     - target: {fileID: 660268005639286074, guid: d33254e577598254f8fd95fbfe5e2b68,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189981855309816965, guid: d33254e577598254f8fd95fbfe5e2b68,
         type: 3}
       propertyPath: m_IsActive
       value: 1

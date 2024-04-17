@@ -11,12 +11,13 @@ namespace VRBeats
         [SerializeField] private float fadeOutTime = 4.0f;
 
         private AudioSource audioSource = null;
-
+        private AudioSource secondaryAudioSource;
         private void Start()
         {
             audioSource = GetComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = mixerGroup;
-
+            secondaryAudioSource = gameObject.AddComponent<AudioSource>();
+            secondaryAudioSource.outputAudioMixerGroup = mixerGroup;
             ResetThisComponent();
 
         }
@@ -39,8 +40,13 @@ namespace VRBeats
         public void SetAudioMixerPitch(float value)
         {
             audioSource.outputAudioMixerGroup.audioMixer.SetFloat("Pitch", value);
+            secondaryAudioSource.outputAudioMixerGroup.audioMixer.SetFloat("Pitch", value);
         }
 
+        public void PlayShortClip(AudioClip clip)
+        {
+            secondaryAudioSource.PlayOneShot(clip);
+        }
     }
 
 }

@@ -8,6 +8,7 @@ namespace VRBeats
     {
         [SerializeField] private GameEvent onMineSlice = null;
         [SerializeField] private GameEvent onGameOver = null;
+        [SerializeField] protected IntGameEvent onCut = null;
         [SerializeField] private GameObject explosionPrefab;
         private float speed = 0.0f;
         private Transform player = null;
@@ -42,6 +43,7 @@ namespace VRBeats
         public void OnCut( DamageInfo info )
         {
             onMineSlice.Invoke();
+            onCut?.Invoke(1);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             //onGameOver.Invoke();
         }

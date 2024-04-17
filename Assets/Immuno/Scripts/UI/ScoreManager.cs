@@ -49,23 +49,23 @@ namespace VRBeats
             errorLimit = VR_BeatManager.instance.GameSettings.ErrorLimit;
             multiplierLoader.fillAmount = 0.0f;
             lives = Lives.Length;
-        }       
+        }
 
         public void OnGameOver()
-        {            
+        {
             gameObject.CancelAllTweens();
             canvasGroup.Fade(0.0f, 0.5f).SetEase(Ease.EaseOutExpo).SetOwner(gameObject);
         }
 
         public void OnGameRestart()
-        {            
+        {
             ResetThisComponent();
             gameObject.CancelAllTweens();
             canvasGroup.Fade(1.0f, 0.5f).SetEase(Ease.EaseOutExpo).SetOwner(gameObject);
         }
 
         public void ResetThisComponent()
-        {           
+        {
             currentMultiplier = 0;
             currentScore = 0;
             acumulateCorrectSlices = 0;
@@ -93,11 +93,38 @@ namespace VRBeats
             acumulateCorrectSlices = 0;
             currentMultiplier = 0;
             toNextMultiplierIncrease = 3;
-            currentScore -= scorePerHit + (scorePerHit * currentMultiplier);
+            //currentScore -= scorePerHit + (scorePerHit * currentMultiplier);
             acumulateErrors = 0;
             UpdateMultiplierLoaderValue();
             CheckGame();
             //OnIncorrectSlice();
+        }
+
+        public void OnPlayerMiss()
+        {
+            if (destroyed)
+                return;
+            ShowNextHint();
+            acumulateErrors++;
+            acumulateCorrectSlices = 0;
+            currentMultiplier = 0;
+            toNextMultiplierIncrease = 3;
+            // currentScore -= scorePerHit + (scorePerHit * currentMultiplier);
+            CancelTweenById(scoreTweenID);
+            scoreTweenID = PlatinioTween.instance.ValueTween(visualScore, currentScore, scoreFollowTime).SetEase(Ease.EaseOutExpo).SetOnUpdateFloat(delegate (float value)
+            {
+                visualScore = value;
+            }).ID;
+            UpdateMultiplierLoaderValue();
+
+            if (acumulateErrors > errorLimit)
+            {
+                acumulateErrors = 0;
+                lives--;
+                if (lives > 0) Lives[lives - 1].SetActive(false);
+                CheckGame();
+                //onGameOver.Invoke();
+            }
         }
         public void OnCorrectSlice()
         {
@@ -110,7 +137,7 @@ namespace VRBeats
 
             CancelTweenById(scoreTweenID);
             scoreTweenID = PlatinioTween.instance.ValueTween(visualScore, currentScore, scoreFollowTime).SetEase(Ease.EaseOutExpo).SetOnUpdateFloat(delegate (float value)
-             {                
+             {
                  visualScore = value;
              }).ID;
 
@@ -126,13 +153,13 @@ namespace VRBeats
 
         private void CancelTweenById(int id)
         {
-            if(id != -1)
+            if (id != -1)
                 PlatinioTween.instance.CancelTween(id);
         }
 
         private void UpdateMultiplierLoaderValue()
         {
-            if (destroyed)
+            if (destroyed || true)
                 return;
 
             float multiplierLoaderValue = (float)acumulateCorrectSlices / (float)toNextMultiplierIncrease;
@@ -141,12 +168,12 @@ namespace VRBeats
             CancelTweenById(loaderTweenID);
             loaderTweenID = PlatinioTween.instance.ValueTween(multiplierLoader.fillAmount, multiplierLoaderValue, 1.0f).SetEase(Ease.EaseOutExpo).SetOnUpdateFloat(delegate (float value)
             {
-                if(multiplierLoader != null)
+                if (multiplierLoader != null)
                     multiplierLoader.fillAmount = value;
             }).SetOwner(multiplierLoader.gameObject).ID;
         }
 
-        
+
         public void OnIncorrectSlice()
         {
             if (destroyed)
@@ -156,7 +183,7 @@ namespace VRBeats
             acumulateCorrectSlices = 0;
             currentMultiplier = 0;
             toNextMultiplierIncrease = 3;
-            currentScore -= scorePerHit + (scorePerHit * currentMultiplier);
+            // currentScore -= scorePerHit + (scorePerHit * currentMultiplier);
             CancelTweenById(scoreTweenID);
             scoreTweenID = PlatinioTween.instance.ValueTween(visualScore, currentScore, scoreFollowTime).SetEase(Ease.EaseOutExpo).SetOnUpdateFloat(delegate (float value)
             {
@@ -164,7 +191,7 @@ namespace VRBeats
             }).ID;
             UpdateMultiplierLoaderValue();
 
-            if (acumulateErrors > errorLimit)
+            //if (acumulateErrors > errorLimit)
             {
                 acumulateErrors = 0;
                 lives--;
@@ -188,6 +215,7 @@ namespace VRBeats
         }
         public void ShowNextHint()
         {
+            return;
             if (cubesQueue.Count == 0) return;
             int raket = cubesQueue.Dequeue();
             HintLabel.text = raket == 1 ? "Left" : "Right";
@@ -201,12 +229,12 @@ namespace VRBeats
                 return;
 
             multiplierLabel.text = currentMultiplier.ToString();
-            scoreLabel.text = Mathf.CeilToInt( visualScore ).ToString();
+            scoreLabel.text = Mathf.CeilToInt(visualScore).ToString();
         }
 
         private void IncreaseMultiplier()
         {
-            if (destroyed)
+            if (destroyed || true)
                 return;
 
             acumulateCorrectSlices = 0;
