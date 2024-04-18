@@ -47,6 +47,8 @@ namespace VRBeats
             maxMultiplier = VR_BeatManager.instance.GameSettings.MaxMultiplier;
             scorePerHit = VR_BeatManager.instance.GameSettings.ScorePerHit;
             errorLimit = VR_BeatManager.instance.GameSettings.ErrorLimit;
+            int complexity = PlayerPrefs.GetInt("Complexity");
+            errorLimit = 3 - complexity;
             multiplierLoader.fillAmount = 0.0f;
             lives = Lives.Length;
         }

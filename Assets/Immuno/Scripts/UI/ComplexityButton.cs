@@ -61,6 +61,7 @@ public class ComplexityButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerClick(PointerEventData eventData)
     {
         PlayerPrefs.SetInt("Complexity", (int)complextyLevel);
+        //Debug.Log("Complexit Level " + (int)complextyLevel);
         PlayableManager.SetSelectedTrackIndex(0);
         //string sceneName = trackInfo.Mode == Mode.Boxing ? boxingStyleSceneName : saberStyleScenName;
         SceneManager.LoadScene(1);

@@ -35,7 +35,7 @@ namespace VRBeats
 
         public void PlayHapticEffect()
         {
-            controller.SendHapticImpulse(0.7f, 1f);
+            controller.SendHapticImpulse(0.7f, 0.3f);
         }
 
     }

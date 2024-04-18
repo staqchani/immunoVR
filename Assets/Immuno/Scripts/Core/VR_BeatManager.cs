@@ -41,7 +41,8 @@ namespace VRBeats
             float duration = (float)playableDirector.playableAsset.duration;
             float t = 0;
             int complexity = PlayerPrefs.GetInt("Complexity");
-            settings.SetTargetTravelTime(complexity == 0 ? 0.5f : complexity == 1 ? 0.4f : 0.3f);
+
+            //settings.SetTargetTravelTime(complexity == 0 ? 0.5f : complexity == 1 ? 0.3f : 0.1f);
             ModeSetting mode = settings.Mode(complexity);
             float steps = duration / mode.totalSpawnable;
             float s = 0;
@@ -104,6 +105,7 @@ namespace VRBeats
             frame++;                       
         }
 
+        float travelTime = 3;
         public void Spawn(Spawneable spawneable , SpawnEventInfo info)
         {
             if (!isGameRunning)
@@ -123,7 +125,7 @@ namespace VRBeats
             Vector3 finalScale = clone.transform.localScale;
             clone.transform.localScale = Vector3.zero;
 
-            
+            //Debug.Log("Travel Time: " + settings.TargetTravelTime);
             clone.transform.Move(finalPosition, settings.TargetTravelTime).SetEase(settings.TargetTravelEase).SetOnComplete(delegate
             {
                 clone.OnSpawn();

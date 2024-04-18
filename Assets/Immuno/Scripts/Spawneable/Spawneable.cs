@@ -99,8 +99,8 @@ namespace VRBeats
             switch (complexity)
             {
                 case 0: info.speed = 4f; break;
-                case 1: info.speed = 8f; break;
-                case 2: info.speed = 12f; break;
+                case 1: info.speed = 4.5f; break;
+                case 2: info.speed = 5f; break;
             }
             
             speed = info.speed * info.speedMultiplier;
